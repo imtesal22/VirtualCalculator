@@ -1,8 +1,34 @@
 # OpenCv Code  is connected to the graphics and the bassics of calculator. Will be written once the other two parts are
 # done to some extent.
 
-
+import cv2
+from cvzone.HandTrackingModule import HandDetector
 from tkinter import *
+
+#Webcam
+cap = cv2.VideoCapture(0)       # you can define the size as well. Defaul# t is 640 x 480
+
+#HandDetection
+detector = HandDetector(detectionCon=0.8, maxHands=1)       # DetectionCon is how much sure is the program that the object is a hand. value is set to 80%.
+
+
+#Function to open the camera
+def openCamera():
+    while True:
+        #Get image from the camera
+        success, image = cap.read()
+
+        #Flipping the image
+        image = cv2.flip(image, 1)          # 1 will flip the image horizontally(x axis) and 0 will flip vertically (y-axis)
+
+        #Detection of Hand
+        hands, image =detector.findHands(image, flipType= False)        # Flip Type is set ot false because we have already set a flip once to not get confused in the mirror imaging of the picture.
+
+        #Display Image
+        cv2.imshow("Image", image)
+        cv2.waitKey(1)          # 1 milisecond delay
+
+print(openCamera())
 
 # function to perform
 def perform(num):
@@ -71,3 +97,6 @@ btn_equal.grid(row=4,column=2)
 btn_div=Button(root,text="/",font=("Ariel",12,"bold"),bd=12,height=2,width=6,command=lambda :perform('/'))
 btn_div.grid(row=4,column=3)
 root.mainloop()
+
+
+
