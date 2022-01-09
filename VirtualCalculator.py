@@ -132,6 +132,7 @@ while True:
     cv2.waitKey(1)  # 1 milisecond delay
     key = cv2.waitKey(1)
 
+    # clear screen press c  
     if key == ord('c'):
         myEquation = ''
 
