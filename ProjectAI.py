@@ -12,6 +12,7 @@ class Button:  # initialization
 
     def draw(self, image):  # draw on the image
         # Calculator
+
         # Funtion Name      (width, height),(position),(color in RGB),(completely filled
         # cv2.rectangle(image,(100, 100), (200, 200), (225, 225, 225), cv2.FILLED)
         cv2.rectangle(image, self.pos, (self.pos[0] + self.width, self.pos[1] + self.height), (225, 225, 225),
